@@ -18,6 +18,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Building .....'
+                echo env.GIT_BRANCH
             }
         }
         stage('Deploying in DEV'){
