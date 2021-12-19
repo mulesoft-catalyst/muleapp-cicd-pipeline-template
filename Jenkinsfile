@@ -15,12 +15,6 @@ pipeline {
 
     stages {
         
-        stage('Git Checkout'){
-            steps{
-                git branch: 'develop', url: 'git@github.com:mulesoft-consulting/cicd-pipeline-template.git'
-            }
-        }
-        
         stage('Build'){
             steps {
                 echo 'Building .....'
