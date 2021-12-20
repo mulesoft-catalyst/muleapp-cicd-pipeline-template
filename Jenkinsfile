@@ -18,11 +18,12 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Building .....'
+                echo env.GIT_BRANCH
             }
         }
         stage('Deploying in DEV'){
             when {
-                branch "origin/develop"
+                branch "develop"
             }
             steps {
                 echo 'Deploying in DEV'
@@ -41,7 +42,7 @@ pipeline {
         }*/
         stage('Deploying in TST'){
             when {
-                branch "origin/test"
+                branch "test"
             }
             steps {
                 echo 'Deploying in TST'
