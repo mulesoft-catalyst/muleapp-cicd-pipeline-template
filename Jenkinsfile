@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'Building .....'
                 echo env.GIT_BRANCH
-                echo ${env.BRANCH_NAME}
+                echo "${env.BRANCH_NAME}"
             }
         }
         stage('Deploying in DEV'){
