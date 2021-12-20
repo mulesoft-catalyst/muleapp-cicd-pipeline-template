@@ -51,9 +51,9 @@ pipeline {
         stage('Deploying in PROD'){
             when {
                 anyOf{
-                    branch "origin/master"
-                    branch "origin/hotfix"
-                    branch "origin/release"
+                    branch "master"
+                    branch "hotfix"
+                    branch "release"
                 }
             }
             steps {
