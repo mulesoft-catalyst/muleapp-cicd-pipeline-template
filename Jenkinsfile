@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Deploying in DEV'){
             when {
-                branch "develop"
+                branch "origin/develop"
             }
             steps {
                 echo 'Deploying in DEV'
@@ -41,22 +41,22 @@ pipeline {
         }*/
         stage('Deploying in TST'){
             when {
-                branch "test"
+                branch "origin/test"
             }
             steps {
                 echo 'Deploying in TST'
             }
         }
-        stage('Deploying in prod'){
+        stage('Deploying in PROD'){
             when {
                 anyOf{
-                    branch "master"
-                    branch "hotfix"
-                    branch "release"
+                    branch "origin/master"
+                    branch "origin/hotfix"
+                    branch "origin/release"
                 }
             }
             steps {
-                echo 'Deploying in TST'
+                echo 'Deploying in PROD'
             }
         }
     }
