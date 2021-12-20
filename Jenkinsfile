@@ -18,16 +18,17 @@ pipeline {
         stage('Build'){
             steps {
                 echo 'Building .....'
-                echo env.GIT_BRANCH
-                echo "${env.BRANCH_NAME}"
             }
         }
         stage('Deploying in DEV'){
+            when {
+                branch "develop"
+            }
             steps {
                 echo 'Deploying in DEV'
             }
         }
-        stage('Approve deployment on Test') {
+        /*stage('Approve deployment on Test') {
             steps {
                 timeout(time: 14, unit: 'DAYS') {
                     script {
@@ -37,10 +38,22 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage('Deploying in TST'){
             when {
-                environment name: 'DEPLOY_TEST', value: "true"
+                branch "test"
+            }
+            steps {
+                echo 'Deploying in TST'
+            }
+        }
+        stage('Deploying in prod'){
+            when {
+                anyOf{
+                    branch "master"
+                    branch "hotfix"
+                    branch "release"
+                }
             }
             steps {
                 echo 'Deploying in TST'
