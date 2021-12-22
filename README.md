@@ -1,0 +1,1 @@
+# muleapp-cicd-pipeline-template
